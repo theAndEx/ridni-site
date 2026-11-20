@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Ridni</title>
+<meta name="description" content="What Ridni stores, who can see it, where it is kept and how long.">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">Ridni</a>
+  <nav><a href="/privacy" aria-current="page">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a></nav>
+</header>
+<main>
+<h1>Privacy</h1>
+<p class="effective">Effective 20 November 2026.</p>
+<p>This page is the full version of what the app shows you under More → Privacy. The short version is on that screen; nothing here contradicts it.</p>
+<p>Ridni is a tracker for one family. The reason this policy is short is that the app does little: it stores what you record, it syncs it to the other adults in your family, and it does not sell, share, profile or advertise against any of it.</p>
+<p><strong>Who is responsible for your data.</strong> Andrii Sotnikov, Kyiv, Ukraine, who develops and runs Ridni. Write to <a href="mailto:privacy@ridni.app">privacy@ridni.app</a> about anything on this page.</p>
+
+<h2>What you record, and who can see it</h2>
+<p>Sleep, feeds, diapers, pumping, weights and heights, notes, temperatures, medications, vaccinations, pregnancy details and cycle entries — everything you enter is stored so that <strong>the adults in your family see it, and nobody else does.</strong> There is no public profile, no sharing link, and no feed.</p>
+<p>Your family is the people you invited with a family code, each with a role: an owner, parents, and caregivers. A caregiver sees the children and can add records; they cannot see your cycle, and they cannot change who is in the family. Who added which record is kept and shown, because in a shared log it matters who wrote it down.</p>
+
+<h2>What we store about your account</h2>
+<p>Your name, your email address, and a password that is stored only as a hash — we cannot read it. If you signed in with Google or Apple, we store the account identifier they give us and your email, and no password at all. We also store your region, time zone, units, language and theme, because the app needs them to show dates, weights and temperatures the way you expect.</p>
+
+<h2>What you record about your children</h2>
+<p>Name, date and time of birth, gender, and measurements if you enter them. You provide this; the app asks for nothing it does not show you asking for. It is stored for the same reason as everything else — so your family's log is useful — and it is deleted when you delete the child's profile or the account, as described below.</p>
+<p>Ridni is for adults keeping a record of their family. You must be 18 or older to create an account. We do not create accounts for children and the app is not addressed to them.</p>
+
+<h2>Cycle data</h2>
+<p>If you turn on cycle tracking, the entries are stored like your other records, but <strong>only you can see them</strong> until you turn sharing on yourself. Cycle reminders are worked out on your phone and never leave it. This is health data, and it is treated as the most private thing in the app: the sharing switch is off until you move it, and turning it off again stops the sharing.</p>
+
+<h2>Health records</h2>
+<p>Temperatures, medications and vaccinations are records you keep, not assessments the app makes. Ridni has no medicine database and no vaccination schedule: it does not tell you whether a value is normal, whether a dose is safe, or whether you are behind on anything. It repeats back what you entered, to the person you share it with. Nothing in it is sent anywhere else.</p>
+
+<h2>Email</h2>
+<p>We send you email only when the app needs to: a sign-up code, a password reset, or a confirmation when you change your address. These are sent through our email provider, Resend, from <em>noreply@mail.ridni.app</em>. We do not send newsletters or marketing.</p>
+
+<h2>Notifications</h2>
+<p>If you turn reminders on, your phone gives us a push token — an identifier for that installation, which is how a reminder reaches that phone and not someone else's. Push messages are delivered through Apple Push Notification service on iPhone and Firebase Cloud Messaging on Android. The token is deleted with your account. Timer and cycle reminders are made by your phone itself and need no connection; the daily summary and "your timer was stopped" come from the server, so those two do.</p>
+
+<h2>Crash reports</h2>
+<p>When the app closes unexpectedly it sends Firebase Crashlytics a report of what went wrong: the device model, the operating system version, and where in the code it failed. The report includes an identifier for the installation, so that repeated crashes can be recognised as one problem. <strong>It does not include your name, your email, or anything you have recorded about your children.</strong> Crash reports are what makes a bug fixable rather than guessable.</p>
+
+<h2>What the app does not do</h2>
+<ul>
+  <li>No advertising, and no advertising identifiers.</li>
+  <li>No analytics or usage tracking, beyond the crash reports described above.</li>
+  <li>No selling or sharing of your data with anyone, for any purpose.</li>
+  <li>No location: the app never asks for it and does not use it.</li>
+  <li>No photos: there is no photo feature in this version, so there is nothing to upload.</li>
+  <li>No profiling and no automated decisions about you.</li>
+</ul>
+
+<h2>Where your data is</h2>
+<p>Your account and records are stored on servers run by DigitalOcean in Frankfurt, Germany. The services we use to run Ridni, and only for that:</p>
+<ul>
+  <li><strong>DigitalOcean</strong> — hosting and database (data centre in Germany).</li>
+  <li><strong>Resend</strong> — sending the emails described above (EU region, Ireland).</li>
+  <li><strong>Google Firebase</strong> — push messages on Android and crash reports.</li>
+  <li><strong>Apple</strong> — push messages on iPhone, and Sign in with Apple if you use it.</li>
+  <li><strong>Google</strong> — Sign in with Google, if you use it.</li>
+</ul>
+<p>Some of these companies are based in the United States, and Ridni is run from Ukraine, so some data can be accessed from outside the European Economic Area. Where that happens it is covered by the European Commission's Standard Contractual Clauses or, for US providers that have joined it, the EU–US Data Privacy Framework.</p>
+
+<h2>How long it is kept</h2>
+<p>Your records stay as long as your family uses them. Deleting a record takes it out of the app, with five seconds to undo. A deleted record is <strong>marked</strong> deleted rather than removed from the database at once, because every phone in the family has to learn that it is gone — otherwise a phone that was offline would sync it back. <strong>Thirty days after it was deleted, the record is removed for good.</strong></p>
+<p>Deleting your account schedules it: <strong>for seven days, signing in restores everything.</strong> After seven days a job runs and the account is anonymised — your <strong>name is replaced, your email address is replaced with one that goes nowhere, your password is erased, your push token and notification settings are deleted, and any Google or Apple connection is revoked.</strong> The account row itself stays, with nothing in it that identifies you, so that the family's records do not lose what they are attached to.</p>
+<p>The records you added stay with your family — because they are the family's log of their own children, and removing them would take away another parent's history — and they show as added by a <strong>former member</strong>, with no name attached.</p>
+<p><strong>Your cycle entries are deleted with your account.</strong> Nobody but you could ever see them, so there is no family history to keep: when the account is anonymised, they are removed.</p>
+<p>Database backups are kept for up to seven days, so anything removed can remain in a backup for at most seven more days before it is gone from there too.</p>
+
+<h2>Your rights</h2>
+<p>Under the GDPR you can ask us to give you a copy of your data, correct it, delete it, limit what we do with it, or object to it; you can withdraw consent where you gave it; and you can ask for your data in a portable form.</p>
+<p>This version of the app has no export button, so <strong>a copy of your data is a request, not a download</strong>: use the form at <a href="/support#request">ridni.app/support</a> or write to <a href="mailto:privacy@ridni.app">privacy@ridni.app</a>. We answer within one month. We will ask you to write from the address on the account, because that is the only way we can tell it is yours.</p>
+<p>You can also complain to a data protection authority: in Ukraine, the <a href="https://ombudsman.gov.ua">Ukrainian Parliament Commissioner for Human Rights</a>; in the EU, the authority of the country you live in (<a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en">list of EU authorities</a>).</p>
+
+<h2>Changes</h2>
+<p>If this page changes in a way that matters, the app will say so rather than leaving you to notice. The date at the top is the version you are reading.</p>
+</main>
+<footer class="site">
+  <span>© 2026 Ridni</span>
+  <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a> · <a href="/delete-account">Delete account</a></span>
+</footer>
+</body>
+</html>
