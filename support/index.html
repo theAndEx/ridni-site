@@ -18,6 +18,7 @@
 <script>
 (function () {
   try {
+    if (/[?&]lang=en/.test(location.search)) { localStorage.setItem('ridni-lang', 'en'); return; }
     var saved = localStorage.getItem('ridni-lang');
     var supported = ["uk", "ru", "pl", "de", "es", "fr"];
     var want = saved || (navigator.language || 'en').slice(0, 2).toLowerCase();

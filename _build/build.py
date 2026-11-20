@@ -59,6 +59,7 @@ TEMPLATE = """<!DOCTYPE html>
 REDIRECT = """<script>
 (function () {{
   try {{
+    if (/[?&]lang=en\b/.test(location.search)) {{ localStorage.setItem('ridni-lang', 'en'); return; }}
     var saved = localStorage.getItem('ridni-lang');
     var supported = {supported};
     var want = saved || (navigator.language || 'en').slice(0, 2).toLowerCase();
