@@ -16,7 +16,7 @@ design handoff docs alone. A row whose status is not ✅ is a promise the code d
 | 3 | Caregiver does not see cycle, pregnancy, mother's weight, her appointments | backend `app/services/cycle_privacy.py`, `mother_privacy.py` | ✅ |
 | 4 | Mother's weight visible to other adults only after `share_weight` | backend `app/services/mother_privacy.py` | ✅ |
 | 5 | Account: name, email, photo, password hash; Google/Apple id; Apple token for revocation; region, tz, units, language, theme, cycle goal | backend `app/models/user.py` | ✅ |
-| 6 | Per phone: platform, app version, last sync, push token | backend `app/models/sync.py` (`SyncDevice`) | ✅ (app sends `app_version` hard-coded "1.0.0" — fix) |
+| 6 | Per phone: platform, app version, last sync, push token | backend `app/models/sync.py` (`SyncDevice`); app `src/services/appVersion.ts` (bundle version + build via `react-native-device-info`), sent by `src/hooks/useSyncManager.ts` | ✅ (S-295) |
 | 7 | Child: name, nickname, birth date/time, gender, birth details, blood type, notes, photo, measurements | backend `app/models/child.py`; app `src/store/api/childrenApi.ts` | ✅ |
 | 8 | Photos: camera or library, one picked photo, not saved to gallery, 256×256 JPEG ≤100 KB, stored in DB, family-only, child photo by owner/parent, adult photo by self | app `src/components/features/PhotoAvatarControl.tsx`; backend `app/models/profile_photo.py`, `app/api/v1/photos.py` | ✅ |
 | 9 | Photo deleted on remove, with child profile, with account | backend `app/services/profile_photo.py`, `account.py::anonymize_user`, `workers/tasks/purge.py::purge_orphan_photos` | ✅ |
@@ -26,11 +26,11 @@ design handoff docs alone. A row whose status is not ✅ is a promise the code d
 | 13 | Doctor PDF made on the phone, shared by the user, consent each time | app `src/features/health/share/pdf/*`, `SharePdfConsentDialog.tsx` | ✅ |
 | 14 | Emails: verify, reset, email change (+ notice to old address), deletion scheduled, deletion done; via Resend from noreply@mail.ridni.app | backend `app/emails/templates.py` (`EmailKind`) | ✅ |
 | 15 | Push via APNs / FCM; daily summary and "timer stopped" from server | backend `app/workers/main.py` | ✅ |
-| 16 | Crashlytics: device model, OS, stack, installation id; no name/email/records; fatal and unhandled errors | app `src/services/crashReporting.ts` | ⚠️ `toError` JSON-stringifies arbitrary rejection values — may carry personal data; sanitise |
+| 16 | Crashlytics: device model, OS, stack, installation id; no name/email/records; fatal and unhandled errors | app `src/services/crashReporting.ts` (`toError`: error type + message only, payloads dropped; the only file importing Crashlytics — `src/services/__tests__/crashReporting.test.ts`) | ✅ (S-295) |
 | 17 | No ads, no analytics SDK, no location | app `package.json`, `ios/Ridni/Info.plist`, `AndroidManifest.xml` | ✅ |
-| 18 | Server logs: failed/slow/sign-in/setup requests; account id, path, status, time; no IP, no body; deleted after 90 days | backend `app/core/logging_middleware.py`, `app/models/api_log.py` | ❌ no cleanup job — add 90-day purge of `api_logs` |
+| 18 | Server logs: failed/slow/sign-in/setup requests; account id, path, status, time; no IP, no body; deleted after 90 days | backend `app/core/logging_middleware.py`, `app/models/api_log.py`; daily purge `app/workers/tasks/cleanup.py::purge_old_api_logs` (04:45 UTC, `config.api_log_retention_days` = 90) | ✅ (S-295) |
 | 19 | Hosting DigitalOcean Frankfurt; Resend EU; Firebase; Apple; Google | infrastructure (`docs/plans/05-…-RESULTS.md`) | ✅ |
-| 20 | Deleted record: soft delete, hard delete after 30 days | backend `app/workers/tasks/purge.py`, `config.soft_delete_retention_days` | ✅ |
+| 20 | Deleted record: soft delete, hard delete after 30 days | backend `app/workers/tasks/purge.py` (docstring: 30 days, separate from the 7-day account recovery), `config.soft_delete_retention_days` | ✅ (S-295) |
 | 21 | Account deletion: 7-day grace, then anonymise (name, email, password, tokens, push, notification settings, OAuth revoked) | backend `app/api/v1/users.py`, `workers/tasks/account_cleanup.py`, `services/account.py` | ✅ |
 | 22 | Deleted with account: cycle, own weight/height, appointments, pumping, pregnancy entries made, photo, devices | backend `services/account.py::delete_personal_data` (CASCADE FKs to `users`) | ✅ |
 | 23 | Ownership passes to the longest-standing parent; last adult takes the family with them | backend `services/family.py::release_families_of_departing_user`; also when an owner leaves to join another family as a parent (`services/family.py::accept_invitation`, mode `leave`, D-252) | ✅ (leave-and-join case not on the pages yet — wording asked of Design) |
