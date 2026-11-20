@@ -1,105 +1,230 @@
-:root {
-  --bg: #fbf8f4;
-  --text: #2a2622;
-  --muted: #6f665d;
-  --accent: #c2604a;
-  --line: #e8e1d8;
-  --card: #ffffff;
+/* Ridni — ridni.app. One stylesheet, no framework, no build step, nothing fetched
+   from a third party. Values come from handoff/tokens.json; names match theme.ts so
+   a colour changed in the app can be found here by the same word. (S-278, D-248) */
+
+/* Static Manrope cuts from the app repo, subset to Latin + Cyrillic (SIL OFL 1.1). */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/manrope-500.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/manrope-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/assets/fonts/manrope-800.woff2') format('woff2');
+}
+
+:root {
+  --bg: #F6F5F1;
+  --card: #FFFFFF;
+  --border: #E4E0D8;
+  --border-light: #ECE9E2;
+  --text: #2D3436;
+  --text-secondary: #5C686A;
+  --text-tertiary: #737F81;
+  --primary: #5C7A65;
+  --primary-light: #E8F0EA;
+  --on-primary: #FFFFFF;
+  --link: #52705E;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --measure: 34rem;                /* legal text: ~66 characters, the readable line */
+  --page: 68rem;
+  --font: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1c1a18;
-    --text: #efe9e2;
-    --muted: #a99f94;
-    --accent: #e08a72;
-    --line: #34302c;
-    --card: #24211f;
+    --bg: #161A1C;
+    --card: #21262A;
+    --border: #2E3539;
+    --border-light: #252A2E;
+    --text: #EEF1EE;
+    --text-secondary: #A2ABA8;
+    --text-tertiary: #7F8A87;
+    --primary: #A3C2AE;
+    --primary-light: #26332C;
+    --on-primary: #14201A;
+    --link: #A3C2AE;
   }
 }
-* { box-sizing: border-box; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
 html { -webkit-text-size-adjust: 100%; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
-a { color: var(--accent); }
-header.site, footer.site {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px 20px;
+
+/* ---------- header ---------- */
+
+.site-header {
   display: flex;
-  gap: 16px;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-}
-header.site .brand {
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-}
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  margin-left: 16px;
-  font-size: 15px;
-}
-nav a:first-child { margin-left: 0; }
-nav a:hover, nav a[aria-current="page"] { color: var(--text); }
-main {
-  max-width: 720px;
+  gap: 16px;
+  max-width: var(--page);
   margin: 0 auto;
-  padding: 8px 20px 48px;
+  padding: 20px 20px 16px;
 }
-h1 { font-size: 34px; line-height: 1.2; letter-spacing: -0.02em; margin: 16px 0 8px; }
-h2 { font-size: 22px; margin: 40px 0 8px; letter-spacing: -0.01em; }
-h3 { font-size: 18px; margin: 28px 0 4px; }
-p, ul { margin: 0 0 14px; }
-ul { padding-left: 22px; }
+
+.site-header a.wordmark { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+/* Mark in brand primary, wordmark in text ink — the same pairing Logo.tsx uses, and
+   the same viewBox and transform, so the site's lockup cannot drift from the app's. */
+.site-header .wordmark svg { display: block; width: auto; }
+.site-header .wordmark .mark { height: 28px; color: var(--primary); }
+.site-header .wordmark .word { height: 19px; color: var(--text); }
+
+/* The language switcher is a list, not a <select>: a native menu cannot be read by a
+   crawler and the hreflang set is the point of having seven of these pages. */
+.langs { display: flex; flex-wrap: wrap; gap: 2px; list-style: none; margin: 0; padding: 0; }
+.langs a {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.langs a:hover { color: var(--text); background: var(--border-light); }
+.langs a[aria-current='true'] { color: var(--on-primary); background: var(--primary); }
+
+/* ---------- page ---------- */
+
+main { max-width: var(--page); margin: 0 auto; padding: 8px 20px 64px; }
+main.prose { max-width: calc(var(--measure) + 40px); }
+
+h1 { font-size: clamp(30px, 6vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin: 24px 0 12px; }
+h2 { font-size: clamp(22px, 4vw, 26px); font-weight: 800; line-height: 1.25; margin: 40px 0 10px; }
+h3 { font-size: 18px; font-weight: 700; margin: 28px 0 6px; }
+p, li { color: var(--text-secondary); }
+p { margin: 0 0 16px; }
+ul, ol { padding-left: 22px; margin: 0 0 16px; }
 li { margin-bottom: 6px; }
-.effective { color: var(--muted); font-size: 15px; }
-.note {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 16px 18px;
-  margin: 18px 0;
+strong { color: var(--text); font-weight: 700; }
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+hr { border: 0; border-top: 1px solid var(--border-light); margin: 32px 0; }
+code { font-size: 0.9em; background: var(--primary-light); padding: 2px 6px; border-radius: 6px; }
+
+.lede { font-size: clamp(18px, 3.2vw, 21px); color: var(--text-secondary); max-width: var(--measure); }
+.meta { color: var(--text-tertiary); font-size: 14px; }
+
+/* ---------- home ---------- */
+
+.hero { padding: 24px 0 8px; }
+.hero h1 { max-width: 16ch; }
+
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 8px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 52px; padding: 0 22px; border-radius: 26px;
+  background: var(--primary); color: var(--on-primary);
+  font-size: 16px; font-weight: 800; text-decoration: none;
 }
-footer.site {
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+.badge.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+/* A store badge with nowhere to go is a dead control (D-064): until the listings are
+   live the links are rendered as plain text, not as buttons that do nothing. */
+.badge[aria-disabled='true'] { background: var(--border-light); color: var(--text-tertiary); pointer-events: none; }
+
+.features { display: grid; gap: 16px; margin: 40px 0 0; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .features { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .features { grid-template-columns: repeat(4, 1fr); } }
+
+.feature {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 20px 22px;
+}
+.feature h3 { margin: 0 0 6px; color: var(--text); }
+.feature p { margin: 0; font-size: 15px; }
+.feature .glyph { display: block; width: 28px; height: 28px; color: var(--primary); margin-bottom: 12px; }
+
+.shots { display: grid; gap: 16px; margin: 40px 0 0; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.shots img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border); background: var(--card); }
+
+/* ---------- support form ---------- */
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  max-width: var(--measure);
+}
+.form-card label { display: block; font-size: 14px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.form-card input, .form-card textarea {
+  width: 100%; padding: 12px 14px; margin-bottom: 16px;
+  background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 12px;
+  font: inherit; font-size: 16px;            /* 16px: anything smaller zooms iOS Safari */
+}
+.form-card textarea { min-height: 140px; resize: vertical; }
+.form-card button {
+  height: 52px; padding: 0 24px; border: 0; border-radius: 26px;
+  background: var(--primary); color: var(--on-primary);
+  font: inherit; font-size: 16px; font-weight: 800; cursor: pointer;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-tertiary);
   font-size: 14px;
 }
-footer.site a { color: var(--muted); }
-footer.site .langs { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 4px 14px; }
-footer.site .langs strong { color: var(--text); font-weight: 600; }
-.hero { padding: 40px 0 8px; }
-.hero h1 { font-size: 44px; }
-.hero p { font-size: 20px; color: var(--muted); max-width: 560px; }
-form.request { display: grid; gap: 14px; margin: 18px 0; }
-form.request label { display: grid; gap: 6px; font-weight: 600; font-size: 15px; }
-form.request .hint { font-weight: 400; color: var(--muted); font-size: 14px; }
-form.request input, form.request select, form.request textarea {
-  font: inherit;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--text);
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
+.site-footer a { color: var(--text-secondary); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+/* ---------- focus, motion, print ---------- */
+
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+@media print {
+  .site-header .langs, .site-footer nav, .cta { display: none; }
+  body { background: #FFFFFF; color: #000000; font-size: 12pt; }
+  a { color: #000000; }
 }
-form.request textarea { min-height: 120px; resize: vertical; }
-form.request button {
-  justify-self: start;
-  font: inherit;
-  font-weight: 600;
-  padding: 10px 22px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  cursor: pointer;
+
+/* ---------- additions for the published legal/support pages (ridni-site) ---------- */
+.effective { color: var(--text-tertiary); font-size: 14px; }
+.note { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 18px; margin: 18px 0; }
+.note p:last-child { margin-bottom: 0; }
+.form-card { display: block; margin: 16px 0 24px; }
+.form-card label .hint { display: block; font-weight: 500; color: var(--text-tertiary); font-size: 13px; margin: 2px 0 6px; }
+.form-card select {
+  width: 100%; padding: 12px 14px; margin-bottom: 16px;
+  background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 12px;
+  font: inherit; font-size: 16px;
 }
+.site-footer .copy { margin: 0; }

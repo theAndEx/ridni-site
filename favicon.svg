@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#c2604a"/><text x="32" y="44" text-anchor="middle" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="36" font-weight="700" fill="#fff">R</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Ridni">
+  <rect width="128" height="128" rx="28" fill="#E8F0EA"/>
+  <g transform="translate(14.5 16) scale(0.952)">
+    <path d="M50 80 C24 63 17 48 17 37 C17 25 26 18 35 18 C43 18 50 24 50 33 M83.5 46 C81 60 70 69 50 80"
+          fill="none" stroke="#5C7A65" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="73.5" cy="27.5" r="15" fill="#5C7A65"/>
+  </g>
+</svg>

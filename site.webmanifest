@@ -1,0 +1,11 @@
+{
+  "name": "Ridni",
+  "short_name": "Ridni",
+  "icons": [
+    { "src": "/assets/icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#7B9E87",
+  "background_color": "#FFFFFF",
+  "display": "browser"
+}
