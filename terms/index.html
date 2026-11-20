@@ -5,20 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of use — Ridni</title>
 <meta name="description" content="The terms for using Ridni, the shared family log.">
+<link rel="alternate" hreflang="en" href="https://ridni.app/terms/">
+<link rel="alternate" hreflang="uk" href="https://ridni.app/uk/terms/">
+<link rel="alternate" hreflang="ru" href="https://ridni.app/ru/terms/">
+<link rel="alternate" hreflang="pl" href="https://ridni.app/pl/terms/">
+<link rel="alternate" hreflang="de" href="https://ridni.app/de/terms/">
+<link rel="alternate" hreflang="es" href="https://ridni.app/es/terms/">
+<link rel="alternate" hreflang="fr" href="https://ridni.app/fr/terms/">
+<link rel="alternate" hreflang="x-default" href="https://ridni.app/terms/">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('ridni-lang');
+    var supported = ["uk", "ru", "pl", "de", "es", "fr"];
+    var want = saved || (navigator.language || 'en').slice(0, 2).toLowerCase();
+    if (want !== 'en' && supported.indexOf(want) !== -1) {
+      location.replace('/' + want + location.pathname + location.search + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <header class="site">
   <a class="brand" href="/">Ridni</a>
-  <nav><a href="/privacy">Privacy</a><a href="/terms" aria-current="page">Terms</a><a href="/support">Support</a></nav>
+  <nav><a href="/privacy/">Privacy</a><a href="/terms/" aria-current="page">Terms</a><a href="/support/">Support</a></nav>
 </header>
 <main>
 <h1>Terms of use</h1>
-<p class="effective">Effective 20 November 2026.</p>
+<p class="effective">Effective 20 November 2026. This English version is the binding one; translations are provided for convenience.</p>
 
 <h2>What Ridni is</h2>
 <p>Ridni is an app for recording what happens with your family — sleep, feeds, diapers, growth, health notes, pregnancy and cycles — and sharing those records with the adults you invite. That is the whole service. It is provided by Andrii Sotnikov, Kyiv, Ukraine.</p>
+
+<h2>Subscriptions</h2>
+<p>Ridni can be used free of charge. Some features may need a paid subscription; the app shows the price and what it includes before you buy. Subscriptions are bought and managed through the App Store or Google Play, and their terms govern payment, renewal, cancellation and refunds. A subscription renews automatically until you cancel it in your store account settings.</p>
 
 <h2>Who can use it</h2>
 <p>Adults. You need to be 18 or older to create an account. Ridni is for a parent or carer keeping a record; it is not addressed to children and we do not create accounts for them.</p>
@@ -43,7 +66,7 @@
 <p>We try to keep Ridni working and your data safe, and the app is built to keep recording when the connection is gone. We cannot promise it is never down, never slow, and never wrong. <strong>Keep your own note of anything you cannot afford to lose</strong> — a medication schedule, say.</p>
 
 <h2>If something goes wrong</h2>
-<p>Ridni is currently provided free of charge and as it is. To the extent the law that applies to you allows, we are not liable for indirect or consequential loss, or for loss caused by relying on the app instead of a doctor or your own records. Nothing in these terms limits liability for death or personal injury caused by negligence, for fraud, or for anything else that cannot be limited by law, and nothing here takes away a right you have as a consumer where you live.</p>
+<p>Ridni is provided as it is. To the extent the law that applies to you allows, we are not liable for indirect or consequential loss, or for loss caused by relying on the app instead of a doctor or your own records. Nothing in these terms limits liability for death or personal injury caused by negligence, for fraud, or for anything else that cannot be limited by law, and nothing here takes away a right you have as a consumer where you live.</p>
 
 <h2>Changes, and ending it</h2>
 <p>If these terms change in a way that matters, the app will tell you. You can delete your account at any time — <a href="/delete-account">ridni.app/delete-account</a> explains what happens. We can close an account that breaks these terms, and we will say why.</p>
@@ -56,7 +79,8 @@
 </main>
 <footer class="site">
   <span>© 2026 Ridni</span>
-  <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a> · <a href="/delete-account">Delete account</a></span>
+  <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/support/">Support</a> · <a href="/delete-account/">Delete account</a></span>
+  <span class="langs" aria-label="Language"><strong>English</strong> <a href="/uk/terms/" hreflang="uk" onclick="try{localStorage.setItem('ridni-lang','uk')}catch(e){}">Українська</a> <a href="/ru/terms/" hreflang="ru" onclick="try{localStorage.setItem('ridni-lang','ru')}catch(e){}">Русский</a> <a href="/pl/terms/" hreflang="pl" onclick="try{localStorage.setItem('ridni-lang','pl')}catch(e){}">Polski</a> <a href="/de/terms/" hreflang="de" onclick="try{localStorage.setItem('ridni-lang','de')}catch(e){}">Deutsch</a> <a href="/es/terms/" hreflang="es" onclick="try{localStorage.setItem('ridni-lang','es')}catch(e){}">Español</a> <a href="/fr/terms/" hreflang="fr" onclick="try{localStorage.setItem('ridni-lang','fr')}catch(e){}">Français</a></span>
 </footer>
 </body>
 </html>

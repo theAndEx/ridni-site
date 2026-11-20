@@ -5,13 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ridni — a shared log for your family</title>
 <meta name="description" content="Ridni keeps your family's record of sleep, feeds, diapers, growth and health, shared with the adults you invite.">
+<link rel="alternate" hreflang="en" href="https://ridni.app/">
+<link rel="alternate" hreflang="uk" href="https://ridni.app/uk/">
+<link rel="alternate" hreflang="ru" href="https://ridni.app/ru/">
+<link rel="alternate" hreflang="pl" href="https://ridni.app/pl/">
+<link rel="alternate" hreflang="de" href="https://ridni.app/de/">
+<link rel="alternate" hreflang="es" href="https://ridni.app/es/">
+<link rel="alternate" hreflang="fr" href="https://ridni.app/fr/">
+<link rel="alternate" hreflang="x-default" href="https://ridni.app/">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('ridni-lang');
+    var supported = ["uk", "ru", "pl", "de", "es", "fr"];
+    var want = saved || (navigator.language || 'en').slice(0, 2).toLowerCase();
+    if (want !== 'en' && supported.indexOf(want) !== -1) {
+      location.replace('/' + want + location.pathname + location.search + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <header class="site">
   <a class="brand" href="/">Ridni</a>
-  <nav><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a></nav>
+  <nav><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav>
 </header>
 <main>
 <section class="hero">
@@ -37,7 +57,8 @@
 </main>
 <footer class="site">
   <span>© 2026 Ridni</span>
-  <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a> · <a href="/delete-account">Delete account</a></span>
+  <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/support/">Support</a> · <a href="/delete-account/">Delete account</a></span>
+  <span class="langs" aria-label="Language"><strong>English</strong> <a href="/uk/" hreflang="uk" onclick="try{localStorage.setItem('ridni-lang','uk')}catch(e){}">Українська</a> <a href="/ru/" hreflang="ru" onclick="try{localStorage.setItem('ridni-lang','ru')}catch(e){}">Русский</a> <a href="/pl/" hreflang="pl" onclick="try{localStorage.setItem('ridni-lang','pl')}catch(e){}">Polski</a> <a href="/de/" hreflang="de" onclick="try{localStorage.setItem('ridni-lang','de')}catch(e){}">Deutsch</a> <a href="/es/" hreflang="es" onclick="try{localStorage.setItem('ridni-lang','es')}catch(e){}">Español</a> <a href="/fr/" hreflang="fr" onclick="try{localStorage.setItem('ridni-lang','fr')}catch(e){}">Français</a></span>
 </footer>
 </body>
 </html>

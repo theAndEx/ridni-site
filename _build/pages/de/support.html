@@ -1,0 +1,69 @@
+<!-- title: Hilfe — Ridni | description: Hilfe zu Ridni und wie du eine Kopie, Berichtigung oder Löschung deiner Daten anfragst. -->
+<h1>Hilfe</h1>
+<p class="effective">Gültig ab 20. November 2026.</p>
+<p>Schreib an <a href="mailto:support@ridni.app">support@ridni.app</a>, und ein Mensch antwortet. Keine Ticketnummer, kein Bot. Wenn deine Frage deine Daten betrifft — eine Kopie, eine Berichtigung, eine Löschung — nutze das Formular unten auf dieser Seite, denn dafür haben wir eine Frist einzuhalten.</p>
+
+<h2>Was Leute wirklich fragen</h2>
+
+<h3>Wie füge ich meinen Partner oder meine Partnerin hinzu?</h3>
+<p>Mehr → Familienmitglieder → Jemanden einladen, oder der Einladungsschritt bei der Einrichtung. Du bekommst einen sechsstelligen Familiencode, der sieben Tage gilt. Dein Partner oder deine Partnerin installiert Ridni, legt ein eigenes Konto an und gibt den Code ein. Danach seht ihr beide jede Mahlzeit, jedes Nickerchen und jede Windel, sobald sie eingetragen sind.</p>
+
+<h3>Was sieht eine Betreuungsperson?</h3>
+<p>Die Kinder und ihre Einträge, und sie kann auch Einträge hinzufügen. Eine Betreuungsperson kann nicht ändern, wer zur Familie gehört oder welche Rolle jemand hat, und sieht das Zyklus-Tracking nicht. Die Rolle wird bei der Einladung festgelegt und kann später von einem Elternteil geändert werden.</p>
+
+<h3>Warum sagt mir die App nicht, ob etwas normal ist?</h3>
+<p>Weil sie es nicht weiß, und eine selbstsichere Antwort über dein Kind von einer Software, die dein Kind nie gesehen hat, ist schlimmer als keine Antwort. Ridni hält den Eintrag fest und zeigt dir die Zahl. Die Wachstumskurve zeichnet das WHO-Perzentilband, damit du siehst, wo ein Messwert liegt, und dabei bleibt es: keine Urteile, kein „du solltest“, kein Plan, hinter dem du zurückliegst.</p>
+
+<h3>Warum gibt es keinen Impfkalender?</h3>
+<p>Impfpläne unterscheiden sich von Land zu Land und ändern sich, und ein falscher wäre auf eine ganz bestimmte Weise gefährlich: Du würdest ihm vertrauen. Ridni speichert die Impfungen, die du einträgst, mit den Daten, die du einträgst. Nichts darin ist fällig oder überfällig.</p>
+
+<h3>Ein Timer läuft, und ich kann ihn nicht stoppen.</h3>
+<p>Wer einen Timer gestartet hat, kann ihn von seinem Handy aus stoppen; nach dreißig Minuten fällt die Sperre weg, und jeder kann es. Das ist Absicht — zwei Erwachsene, die dasselbe Nickerchen von zwei Handys aus stoppen, sind genau der Grund für falsche Schlafeinträge. Du kannst trotzdem eine Notiz zu einem Timer hinzufügen, den du nicht gestartet hast.</p>
+
+<h3>Was passiert ohne Verbindung?</h3>
+<p>Alles funktioniert weiter. Einträge werden auf dem Handy gespeichert und synchronisiert, wenn die Verbindung zurück ist; ein Banner zeigt, wie viele warten. Wenn dasselbe auf zwei Handys bearbeitet wurde, während eines offline war, zeigt die App beide Versionen und fragt, welche bleiben soll — sie entscheidet nie für dich. Die Version, die du nicht behältst, wird nicht gespeichert, und nur das gewählte Feld ändert sich; der Rest des Eintrags bleibt, wie er war.</p>
+
+<h3>Ich habe aus Versehen etwas gelöscht.</h3>
+<p>Im Hinweis hast du fünf Sekunden zum Rückgängigmachen. Danach ist es weg.</p>
+
+<h3>Wie lösche ich mein Konto?</h3>
+<p>Mehr → Konto → Konto löschen, oder <a href="/de/delete-account/">ridni.app/de/delete-account</a>, wenn du dich nicht anmelden kannst. Sieben Tage lang bringt eine Anmeldung alles zurück. Was mit deinen Einträgen passiert, steht auf dieser Seite.</p>
+
+<h3>Kann ich meine Daten bekommen?</h3>
+<p>Ja, auf Anfrage — diese Version hat keinen Export-Button. Nutze das Formular unten; wir antworten innerhalb eines Monats.</p>
+
+<h3>Gibt es Ridni in meiner Sprache?</h3>
+<p>Die App folgt deinem Handy: Deutsch, Englisch, Ukrainisch, Russisch, Polnisch, Spanisch und Französisch. Du kannst das unter Mehr → Region & Einheiten ändern.</p>
+
+<h2 id="request">Anfrage zu deinen Daten</h2>
+<p>Das Formular bereitet eine E-Mail an <a href="mailto:privacy@ridni.app">privacy@ridni.app</a> in deinem Mailprogramm vor. Schick sie von der Adresse deines Kontos.</p>
+<form class="request" id="request-form">
+  <label>Deine E-Mail
+    <span class="hint">Die Adresse des Kontos. Wir antworten an diese Adresse und keine andere, weil wir nur so erkennen, dass die Anfrage von dir ist.</span>
+    <input type="email" name="email" required autocomplete="email">
+  </label>
+  <label>Was du brauchst
+    <select name="kind" required>
+      <option>Eine Kopie meiner Daten</option>
+      <option>Etwas berichtigen</option>
+      <option>Mein Konto und meine Daten löschen</option>
+      <option>Etwas anderes</option>
+    </select>
+  </label>
+  <label>Deine Nachricht
+    <span class="hint">Alles, was hilft, das richtige Konto oder den richtigen Eintrag zu finden.</span>
+    <textarea name="message"></textarea>
+  </label>
+  <button type="submit">Senden</button>
+</form>
+<script>
+document.getElementById('request-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var subject = 'Datenanfrage: ' + f.kind.value;
+  var body = 'E-Mail des Kontos: ' + f.email.value + '\n' + 'Anfrage: ' + f.kind.value + '\n\n' + f.message.value;
+  window.location.href = 'mailto:privacy@ridni.app?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
+</script>
+<p><strong>Wie es weitergeht.</strong> Du bekommst innerhalb eines Monats eine Antwort von einem Menschen, meist früher. Wenn du eine Kopie angefragt hast, kommt sie als Datei, die du ohne Ridni lesen kannst. Wenn du eine Löschung angefragt hast, sagen wir dir genau, was gelöscht wird und was bei deiner Familie bleibt — dasselbe, was <a href="/de/delete-account/">ridni.app/de/delete-account</a> erklärt, damit es keine Überraschung gibt.</p>
+<p>Wenn wir die Adresse keinem Konto zuordnen können, sagen wir das und fragen nichts weiter; wir bestätigen oder verneinen niemandem, der nicht von dieser Adresse schreibt, dass sie registriert ist.</p>

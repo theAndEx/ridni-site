@@ -5,17 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy — Ridni</title>
 <meta name="description" content="What Ridni stores, who can see it, where it is kept and how long.">
+<link rel="alternate" hreflang="en" href="https://ridni.app/privacy/">
+<link rel="alternate" hreflang="uk" href="https://ridni.app/uk/privacy/">
+<link rel="alternate" hreflang="ru" href="https://ridni.app/ru/privacy/">
+<link rel="alternate" hreflang="pl" href="https://ridni.app/pl/privacy/">
+<link rel="alternate" hreflang="de" href="https://ridni.app/de/privacy/">
+<link rel="alternate" hreflang="es" href="https://ridni.app/es/privacy/">
+<link rel="alternate" hreflang="fr" href="https://ridni.app/fr/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://ridni.app/privacy/">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('ridni-lang');
+    var supported = ["uk", "ru", "pl", "de", "es", "fr"];
+    var want = saved || (navigator.language || 'en').slice(0, 2).toLowerCase();
+    if (want !== 'en' && supported.indexOf(want) !== -1) {
+      location.replace('/' + want + location.pathname + location.search + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <header class="site">
   <a class="brand" href="/">Ridni</a>
-  <nav><a href="/privacy" aria-current="page">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a></nav>
+  <nav><a href="/privacy/" aria-current="page">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav>
 </header>
 <main>
 <h1>Privacy</h1>
-<p class="effective">Effective 20 November 2026.</p>
+<p class="effective">Effective 20 November 2026. This English version is the binding one; translations are provided for convenience.</p>
 <p>This page is the full version of what the app shows you under More → Privacy. The short version is on that screen; nothing here contradicts it.</p>
 <p>Ridni is a tracker for one family. The reason this policy is short is that the app does little: it stores what you record, it syncs it to the other adults in your family, and it does not sell, share, profile or advertise against any of it.</p>
 <p><strong>Who is responsible for your data.</strong> Andrii Sotnikov, Kyiv, Ukraine, who develops and runs Ridni. Write to <a href="mailto:privacy@ridni.app">privacy@ridni.app</a> about anything on this page.</p>
@@ -39,6 +59,9 @@
 
 <h2>Email</h2>
 <p>We send you email only when the app needs to: a sign-up code, a password reset, or a confirmation when you change your address. These are sent through our email provider, Resend, from <em>noreply@mail.ridni.app</em>. We do not send newsletters or marketing.</p>
+
+<h2>Payments</h2>
+<p>If you buy a subscription, the payment is handled by Apple or Google. We never see your card or bank details; we receive only whether a subscription is active and when it renews, so the app can unlock what you paid for.</p>
 
 <h2>Notifications</h2>
 <p>If you turn reminders on, your phone gives us a push token — an identifier for that installation, which is how a reminder reaches that phone and not someone else's. Push messages are delivered through Apple Push Notification service on iPhone and Firebase Cloud Messaging on Android. The token is deleted with your account. Timer and cycle reminders are made by your phone itself and need no connection; the daily summary and "your timer was stopped" come from the server, so those two do.</p>
@@ -84,7 +107,8 @@
 </main>
 <footer class="site">
   <span>© 2026 Ridni</span>
-  <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a> · <a href="/delete-account">Delete account</a></span>
+  <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/support/">Support</a> · <a href="/delete-account/">Delete account</a></span>
+  <span class="langs" aria-label="Language"><strong>English</strong> <a href="/uk/privacy/" hreflang="uk" onclick="try{localStorage.setItem('ridni-lang','uk')}catch(e){}">Українська</a> <a href="/ru/privacy/" hreflang="ru" onclick="try{localStorage.setItem('ridni-lang','ru')}catch(e){}">Русский</a> <a href="/pl/privacy/" hreflang="pl" onclick="try{localStorage.setItem('ridni-lang','pl')}catch(e){}">Polski</a> <a href="/de/privacy/" hreflang="de" onclick="try{localStorage.setItem('ridni-lang','de')}catch(e){}">Deutsch</a> <a href="/es/privacy/" hreflang="es" onclick="try{localStorage.setItem('ridni-lang','es')}catch(e){}">Español</a> <a href="/fr/privacy/" hreflang="fr" onclick="try{localStorage.setItem('ridni-lang','fr')}catch(e){}">Français</a></span>
 </footer>
 </body>
 </html>

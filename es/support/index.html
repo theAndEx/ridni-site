@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayuda — Ridni</title>
+<meta name="description" content="Ayuda con Ridni y cómo pedir una copia, rectificación o eliminación de tus datos.">
+<link rel="alternate" hreflang="en" href="https://ridni.app/support/">
+<link rel="alternate" hreflang="uk" href="https://ridni.app/uk/support/">
+<link rel="alternate" hreflang="ru" href="https://ridni.app/ru/support/">
+<link rel="alternate" hreflang="pl" href="https://ridni.app/pl/support/">
+<link rel="alternate" hreflang="de" href="https://ridni.app/de/support/">
+<link rel="alternate" hreflang="es" href="https://ridni.app/es/support/">
+<link rel="alternate" hreflang="fr" href="https://ridni.app/fr/support/">
+<link rel="alternate" hreflang="x-default" href="https://ridni.app/support/">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/es/">Ridni</a>
+  <nav><a href="/es/privacy/">Privacidad</a><a href="/es/terms/">Términos</a><a href="/es/support/" aria-current="page">Ayuda</a></nav>
+</header>
+<main>
+<h1>Ayuda</h1>
+<p class="effective">Vigente desde el 20 de noviembre de 2026.</p>
+<p>Escribe a <a href="mailto:support@ridni.app">support@ridni.app</a> y te responde una persona. Sin número de ticket y sin bots. Si tu pregunta es sobre tus datos —una copia, una corrección, su eliminación—, usa el formulario al final de esta página, porque esas solicitudes tienen un plazo que debemos cumplir.</p>
+
+<h2>Lo que la gente pregunta de verdad</h2>
+
+<h3>¿Cómo añado a mi pareja?</h3>
+<p>Más → Miembros de la familia → Invitar a alguien, o el paso de invitación durante la configuración. Recibes un código familiar de seis dígitos válido durante siete días. Tu pareja instala Ridni, crea su propia cuenta e introduce el código. A partir de ahí, ambos veis cada toma, siesta y pañal en cuanto se apunta.</p>
+
+<h3>¿Qué ve un cuidador?</h3>
+<p>A los niños y sus registros, y también puede añadir registros. Un cuidador no puede cambiar quién forma parte de la familia ni el rol de nadie, y no ve el seguimiento del ciclo. El rol se elige al invitar y un padre o una madre puede cambiarlo después.</p>
+
+<h3>¿Por qué la app no me dice si algo es normal?</h3>
+<p>Porque no lo sabe, y una respuesta segura sobre tu hijo de un software que nunca lo ha visto es peor que ninguna respuesta. Ridni guarda el registro y te muestra el número. La curva de crecimiento dibuja la franja de percentiles de la OMS para que veas dónde queda una medida, y ahí se queda: sin veredictos, sin «deberías», sin calendario con el que vayas con retraso.</p>
+
+<h3>¿Por qué no hay calendario de vacunación?</h3>
+<p>Los calendarios cambian de un país a otro y con el tiempo, y uno equivocado sería peligroso de una forma muy concreta: te lo creerías. Ridni guarda las vacunas que introduces, con las fechas que introduces. Nada en él está pendiente ni atrasado.</p>
+
+<h3>Hay un temporizador en marcha y no puedo pararlo.</h3>
+<p>Quien inició el temporizador puede pararlo desde su teléfono; a los treinta minutos se levanta el bloqueo y cualquiera puede hacerlo. Es a propósito: dos adultos parando la misma siesta desde dos teléfonos es como acaba mal un registro de sueño. Aun así, puedes añadir una nota a un temporizador que no iniciaste.</p>
+
+<h3>¿Qué pasa si no tengo conexión?</h3>
+<p>Todo sigue funcionando. Los registros se guardan en el teléfono y se sincronizan cuando vuelve la conexión; un aviso muestra cuántos esperan. Si lo mismo se editó en dos teléfonos mientras uno estaba sin conexión, la app muestra las dos versiones y te pregunta cuál conservar: nunca elige por ti. La versión que no conservas no se guarda, y solo cambia el campo que elegiste; el resto del registro queda como estaba.</p>
+
+<h3>He borrado algo sin querer.</h3>
+<p>En el aviso tienes cinco segundos para deshacer. Después, desaparece.</p>
+
+<h3>¿Cómo borro mi cuenta?</h3>
+<p>Más → Cuenta → Eliminar cuenta, o <a href="/es/delete-account/">ridni.app/es/delete-account</a> si no puedes iniciar sesión. Durante siete días, iniciar sesión lo devuelve todo. Qué pasa con los registros que añadiste se explica en esa página.</p>
+
+<h3>¿Puedo obtener mis datos?</h3>
+<p>Sí, pidiéndolo: esta versión no tiene botón de exportar. Usa el formulario de abajo; respondemos en un mes.</p>
+
+<h3>¿Puedo usar Ridni en mi idioma?</h3>
+<p>La app sigue a tu teléfono: español, inglés, ucraniano, ruso, polaco, alemán y francés. Puedes cambiarlo en Más → Región y unidades.</p>
+
+<h2 id="request">Solicitud sobre tus datos</h2>
+<p>El formulario prepara un correo a <a href="mailto:privacy@ridni.app">privacy@ridni.app</a> en tu app de correo. Envíalo desde la dirección de tu cuenta.</p>
+<form class="request" id="request-form">
+  <label>Tu correo
+    <span class="hint">La dirección de la cuenta. Respondemos a esa dirección y no a otra, porque es la única forma de saber que la solicitud es tuya.</span>
+    <input type="email" name="email" required autocomplete="email">
+  </label>
+  <label>Qué necesitas
+    <select name="kind" required>
+      <option>Una copia de mis datos</option>
+      <option>Corregir algo</option>
+      <option>Eliminar mi cuenta y mis datos</option>
+      <option>Otra cosa</option>
+    </select>
+  </label>
+  <label>Tu mensaje
+    <span class="hint">Cualquier cosa que ayude a encontrar la cuenta o el registro correctos.</span>
+    <textarea name="message"></textarea>
+  </label>
+  <button type="submit">Enviar</button>
+</form>
+<script>
+document.getElementById('request-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var subject = 'Solicitud de datos: ' + f.kind.value;
+  var body = 'Correo de la cuenta: ' + f.email.value + '\n' + 'Solicitud: ' + f.kind.value + '\n\n' + f.message.value;
+  window.location.href = 'mailto:privacy@ridni.app?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
+</script>
+<p><strong>Qué pasa después.</strong> Te responde una persona en un plazo de un mes, normalmente antes. Si pediste una copia, llega como un archivo que puedes leer sin Ridni. Si pediste la eliminación, te decimos exactamente qué se elimina y qué se queda con tu familia —lo mismo que explica <a href="/es/delete-account/">ridni.app/es/delete-account</a>—, para que no haya sorpresas.</p>
+<p>Si no podemos asociar la dirección a ninguna cuenta, te lo decimos y no preguntamos nada más; no confirmamos ni negamos que una dirección esté registrada a nadie que no escriba desde ella.</p>
+</main>
+<footer class="site">
+  <span>© 2026 Ridni</span>
+  <span><a href="/es/privacy/">Privacidad</a> · <a href="/es/terms/">Términos</a> · <a href="/es/support/">Ayuda</a> · <a href="/es/delete-account/">Eliminar cuenta</a></span>
+  <span class="langs" aria-label="Idioma"><a href="/support/" hreflang="en" onclick="try{localStorage.setItem('ridni-lang','en')}catch(e){}">English</a> <a href="/uk/support/" hreflang="uk" onclick="try{localStorage.setItem('ridni-lang','uk')}catch(e){}">Українська</a> <a href="/ru/support/" hreflang="ru" onclick="try{localStorage.setItem('ridni-lang','ru')}catch(e){}">Русский</a> <a href="/pl/support/" hreflang="pl" onclick="try{localStorage.setItem('ridni-lang','pl')}catch(e){}">Polski</a> <a href="/de/support/" hreflang="de" onclick="try{localStorage.setItem('ridni-lang','de')}catch(e){}">Deutsch</a> <strong>Español</strong> <a href="/fr/support/" hreflang="fr" onclick="try{localStorage.setItem('ridni-lang','fr')}catch(e){}">Français</a></span>
+</footer>
+</body>
+</html>
