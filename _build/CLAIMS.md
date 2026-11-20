@@ -33,9 +33,12 @@ design handoff docs alone. A row whose status is not ✅ is a promise the code d
 | 20 | Deleted record: soft delete, hard delete after 30 days | backend `app/workers/tasks/purge.py`, `config.soft_delete_retention_days` | ✅ |
 | 21 | Account deletion: 7-day grace, then anonymise (name, email, password, tokens, push, notification settings, OAuth revoked) | backend `app/api/v1/users.py`, `workers/tasks/account_cleanup.py`, `services/account.py` | ✅ |
 | 22 | Deleted with account: cycle, own weight/height, appointments, pumping, pregnancy entries made, photo, devices | backend `services/account.py::delete_personal_data` (CASCADE FKs to `users`) | ✅ |
-| 23 | Ownership passes to the longest-standing parent; last adult takes the family with them | backend `services/family.py::release_families_of_departing_user` | ✅ |
+| 23 | Ownership passes to the longest-standing parent; last adult takes the family with them | backend `services/family.py::release_families_of_departing_user`; also when an owner leaves to join another family as a parent (`services/family.py::accept_invitation`, mode `leave`, D-252) | ✅ (leave-and-join case not on the pages yet — wording asked of Design) |
 | 24 | Backups kept ≤ 7 days | DigitalOcean database settings | check with owner |
 | 25 | Family code: 6 characters (letters and digits), valid 7 days | backend `app/models/family.py`, `config.invitation_expire_days` | ✅ |
 | 26 | Timer lock lifts after 30 minutes | backend `app/core/timer_locks.py` | ✅ |
 | 27 | Delete account asks to type DELETE | app `DeleteAccountScreen` | ✅ |
 | 28 | No export button | app | ✅ (PDF is per child, health only) |
+| 29 | (not on the pages yet) An adult is a parent in one family only; a caregiver may be in several families, with a role per family | backend `services/family.py::adult_membership`, `ensure_not_adult_elsewhere`, `_path_for` (D-252) | ⚠️ pages still say "a tracker for one family" — wording asked of Design |
+| 30 | (not on the pages yet) A parent invited into another family who is the only adult in their own can merge: after a page listing what moves, their children and every record move into the inviting family under the same dates, and their own family is dissolved; a child with the same name and birth date is joined only if they say so | backend `services/family_merge.py` (MOVES / LEAVES, swept by `tests/integration/test_family_merge_sweep.py`) | ⚠️ not described on the pages — wording asked of Design |
+| 31 | (not on the pages yet) A push names its family when the person is in more than one | backend `services/notification.py::_send_naming_family` | ⚠️ not described on the pages — wording asked of Design |
