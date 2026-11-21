@@ -63,7 +63,7 @@
 <h1>Privacy</h1>
 <p class="effective">Effective 20 November 2026. This English version is the binding one; translations are provided for convenience.</p>
 <p>This page is the full version of what the app shows you under More → Privacy. The short version is on that screen; nothing here contradicts it.</p>
-<p>Ridni is a tracker for one family. The reason this policy is short is that the app does little: it stores what you record, it syncs it to the other adults in your family, and it does not sell, share, profile or advertise against any of it.</p>
+<p>Ridni is a tracker for your family. A parent belongs to one family; someone who helps — a grandmother, a nanny — can be in several, with their own role in each. The reason this policy is short is that the app does little: it stores what you record, it syncs it to the other adults in your family, and it does not sell, share, profile or advertise against any of it.</p>
 <p><strong>Who is responsible for your data.</strong> Andrii Sotnikov, Kyiv, Ukraine, who develops and runs Ridni. Write to <a href="mailto:privacy@ridni.app">privacy@ridni.app</a> about anything on this page.</p>
 
 <h2>What you record, and who can see it</h2>
@@ -93,7 +93,10 @@
 <p>If you buy a subscription, the payment is handled by Apple or Google. We never see your card or bank details; we receive only whether a subscription is active and when it renews, so the app can unlock what you paid for.</p>
 
 <h2>Notifications</h2>
-<p>If you turn reminders on, your phone gives us a push token — an identifier for that installation, which is how a reminder reaches that phone and not someone else's. Push messages are delivered through Apple Push Notification service on iPhone and Firebase Cloud Messaging on Android. The token is deleted with your account. Timer and cycle reminders are made by your phone itself and need no connection; the daily summary and "your timer was stopped" come from the server, so those two do.</p>
+<p>If you turn reminders on, your phone gives us a push token — an identifier for that installation, which is how a reminder reaches that phone and not someone else's. Push messages are delivered through Apple Push Notification service on iPhone and Firebase Cloud Messaging on Android. The token is deleted with your account. Timer and cycle reminders are made by your phone itself and need no connection; the daily summary and "your timer was stopped" come from the server, so those two do. If you are in more than one family, a notification names the one it is about.</p>
+
+<h2>The Lock Screen and widgets</h2>
+<p>While a timer is running your phone can show it on the Lock Screen and in the Dynamic Island, and a Home Screen widget can show the time since the last entries and start a sleep. For that the phone keeps its own copy of the children's names, the running timers and those times in a container the app and the widget share — on the phone, not on our server, and nothing new leaves it. What the Lock Screen shows is the least that identifies anyone: with one child, no name and no initial at all; with several, the avatar colour and the first letter. The child's name appears there only if you turn it on in Privacy, and a photo never does.</p>
 
 <h2>Crash reports</h2>
 <p>When the app closes unexpectedly, or runs into an error it could not handle, it sends Firebase Crashlytics a report of what went wrong: the device model, the operating system version, and where in the code it failed. The report includes an identifier for the installation, so that a repeated error can be recognised as one problem. <strong>It does not include your name, your email, or anything you have recorded about your children.</strong> Crash reports are what makes a bug fixable rather than guessable.</p>
